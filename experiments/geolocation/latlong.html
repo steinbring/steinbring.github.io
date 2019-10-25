@@ -1,0 +1,40 @@
+<html>
+  <h1>HTML5 Geolocation</h1>
+  <p>This example uses <a href="https://vuejs.org/">Vue.js</a>, <a href="https://github.com/axios/axios">Axios</a>, <a href="https://developer.mapquest.com">a mapquest API</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation">navigator.geolocation</a>.  It should get your current latitude and longitude from your hardware device and query <a href="https://www.mapquest.com">mapquest</a> for location details.
+
+  <div id="app">
+    It looks like you are currently at:<br /><br />
+    {{details.street}}<br />
+    {{details.adminArea5}}, {{details.adminArea3}} {{details.postalCode}}<br />
+  </div> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        details: null
+      };
+    },
+    methods: {
+      geolocation: function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(this.showPosition);
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+      },
+      showPosition: function(position) {
+        // Use Axios to make a MapQuest API Call
+          axios
+          .get("https://www.mapquestapi.com/geocoding/v1/reverse?key=TPWvRrsfpgGWBACqqXd94fbDcfVpy2WJ&location="+position.coords.latitude+"%2C"+position.coords.longitude+"&outFormat=json&thumbMaps=false")
+            .then(response=> (this.details = response.data.results[0].locations[0]));
+      }
+    },
+    mounted() {
+      this.geolocation();
+    }
+  });
+</script>
+</html>
