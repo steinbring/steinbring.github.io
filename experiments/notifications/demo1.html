@@ -4,6 +4,8 @@
 	<title>Notifications API Demo</title>
 </head>
 <body>
+	<h1>Notifications API Demo</h1>
+
 	<button>Show a demo notification</button>
 
 	<script type="text/javascript">
@@ -16,16 +18,16 @@
 		    tag: 'foo',
 		    type: 'basic'
 		  };
-		  var n = new Notification('Joe\'s notification api demo!', options);
-		  n.onclick = function() {
-		    console.log('Clicked.');
-		  };
-		  n.onclose = function() {
-		    console.log('Closed.');
-		  };
-		  n.onshow = function() {
-		    console.log('Shown.');
-		  };
+		  // var n = new Notification('Joe\'s notification api demo!', options);
+		  // n.onclick = function() {
+		  //   console.log('Clicked.');
+		  // };
+		  // n.onclose = function() {
+		  //   console.log('Closed.');
+		  // };
+		  // n.onshow = function() {
+		  //   console.log('Shown.');
+		  // };
 		};
 
 		button.onclick = function() {
