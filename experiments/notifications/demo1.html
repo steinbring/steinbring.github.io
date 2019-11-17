@@ -5,6 +5,7 @@
 </head>
 <body>
 	<h1>Notifications API Demo</h1>
+	<p>Click the button below to see a demo notification</p>
 
 	<button>Show a demo notification</button>
 
@@ -13,21 +14,21 @@
 
 		var notify = function() {
 		  var options = {
-		    body: 'This is a test notification!',
+		    body: 'This is a test notification! Yay!',
 		    icon: 'https://jws.dev/logo.png',
 		    tag: 'foo',
 		    type: 'basic'
 		  };
-		  // var n = new Notification('Joe\'s notification api demo!', options);
-		  // n.onclick = function() {
-		  //   console.log('Clicked.');
-		  // };
-		  // n.onclose = function() {
-		  //   console.log('Closed.');
-		  // };
-		  // n.onshow = function() {
-		  //   console.log('Shown.');
-		  // };
+		  var n = new Notification('Joe\'s notification api demo!', options);
+		  n.onclick = function() {
+		    console.log('Clicked.');
+		  };
+		  n.onclose = function() {
+		    console.log('Closed.');
+		  };
+		  n.onshow = function() {
+		    console.log('Shown.');
+		  };
 		};
 
 		button.onclick = function() {
