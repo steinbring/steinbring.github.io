@@ -8,11 +8,11 @@
 
 	<p>A demo of the notifications API</p>
 
-	<button>Show a demo notification</button>
-
-	<br />
-
 	<input type="text" size="20" placeholder="Type Something Here!">
+
+	<br /><br />
+
+	<button>Show a demo notification</button>
 
 	<script type="text/javascript">
 		var button = document.querySelector('button');
@@ -25,7 +25,7 @@
 		    tag: 'foo',
 		    type: 'basic'
 		  };
-		  var n = new Notification('Joe\'s notification api demo!', options);
+		  var n = new Notification('Joe\'s notification api demo! :)', options);
 		  n.onclick = function() {
 		    console.log('Clicked.');
 		  };
