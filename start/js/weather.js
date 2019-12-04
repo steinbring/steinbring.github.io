@@ -1,4 +1,4 @@
-var wien = 'https://api.openweathermap.org/data/2.5/weather?id=5263045&units=metric&appid=1ee97b4a473d24d39c84f968d128f789';
+var wien = 'https://api.openweathermap.org/data/2.5/weather?id=5254404&units=imperial&appid=1ee97b4a473d24d39c84f968d128f789';
 var xmlhttp1 = new XMLHttpRequest();
 
 xmlhttp1.onreadystatechange = function () {
@@ -16,5 +16,5 @@ function output1 (data) {
   // var wind = (parseInt(data.wind.speed * 3.6)) + 'km/h';
   var pic = 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
 
-  document.getElementById('weather').innerHTML = '<a href="https://openweathermap.org/city/2779469"><img src=' + pic + '>' + 'Wien,' + ' ' + temp + '</a>';
+  document.getElementById('weather').innerHTML = '<a href="https://openweathermap.org/city/5254404"><img src=' + pic + '>' + 'Wien,' + ' ' + temp + '</a>';
 }
