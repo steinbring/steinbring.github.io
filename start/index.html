@@ -6,135 +6,42 @@
 		<title>Start Page</title>
 		<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link rel="stylesheet" type="text/css" href="style/links.css">
-		<script src="js/timedate.js"></script>
-		<script src="js/crypto.js"></script>
-		<script src="js/weather.js"></script>
+
 	</head>
 
 	<body>
-
-		<div id="time"></div>
-		<div id="date"></div>
-
-		<div id="info-container">
-			<div id="btc"></div>
-			<div id="weather"></div>
-		</div>
-
-		<div id="search">
-			<form method="get" action="https://duck.com">
-				<input name="q" autofocus="" placeholder="Search..." autocomplete="off" type="text">
-			</form>
-		</div>
-
-		<div id="link-container">
-
-			<ul class="link-blocks">
-				<h1>Personal</h1><hr>
-				<a href="https://inbox.google.com">
-					<li id="gmail">
-						<img src="img/gmail.svg">Inbox
-					</li>
-				</a>
-				<a href="https://calendar.google.com/">
-					<li id="kalender">
-						<img src="img/calendar.svg">Calender
-					</li>
-				</a>
-				<a href="https://twitter.com/">
-					<li id="twitter">
-						<img src="">Twitter
-					</li>
-				</a>
-				<a href="https://playbeta.pocketcasts.com/">
-					<li id="PocketCasts">
-						<img src="">Pocket Casts
-					</li>
-				</a>
-				<a href="https://play.google.com/">
-					<li id="playmusic">
-						<img src="">Play Music
-					</li>
-				</a>
-				<a href="https://blog.jws.app">
-					<li id="blogJWS">
-						<img src="">Blog.JWS
-					</li>
-				</a>
-			</ul>
-
-			<ul class="link-blocks">
-				<h1>News</h1><hr>
-				<a href="https://news.ycombinator.com/">
-					<li id="HackerNews">
-						<img src="">Hacker news
-					</li>
-				</a>
-				<a href="https://techmeme.com/">
-					<li id="Techmeme">
-						<img src="">Techmeme
-					</li>
-				</a>
-				<a href="https://www.reddit.com/">
-					<li id="reddit">
-						<img src="img/reddit.svg">reddit
-					</li>
-				</a>
-				<a href="https://news.google.com/">
-					<li id="GoogleNews">
-						<img src="">Google News
-					</li>
-				</a>
-				<a href="https://slashdot.org/">
-					<li id="slashdot">
-						<img src="">Slashdot
-					</li>
-				</a>
-				<a href="https://www.producthunt.com/">
-					<li id="ProductHunt">
-						<img src="">Product Hunt
-					</li>
-				</a>
-			</ul>
-
-			<ul class="link-blocks">
-				<h1>Shopping</h1><hr>
-				<a href="https://smile.amazon.com/">
-					<li id="amazon">
-						<img src="img/amazon.svg">Amazon
-					</li>
-				</a>
-				<a href="https://www.ebay.com/">
-					<li id="ebay">
-						<img src="img/ebay.svg">eBay
-					</li>
-				</a>
-				<a href="https://www.kickstarter.com/">
-					<li id="kickstarter">
-						<img src="">Kickstarter
-					</li>
-				</a>
-				<a href="https://slickdeals.net/">
-					<li id="slickdeals">
-						<img src="">Slickdeals
-					</li>
-				</a>
-			</ul>
-
-			<ul class="link-blocks">
-				<h1>Work</h1><hr>
-				<a href="https://www.office.com/">
-					<li id="Office">
-						<img src="">Office 365
-					</li>
-				</a>
-				<a href="https://my.wisconsin.edu">
-					<li id="MyUW">
-						<img src="">My UW System
-					</li>
-				</a>
-			</ul>
-		</div>
+		<div class="grid-container">
+  <div class="fullwide" id="search">
+		<form method="get" action="https://duck.com">
+		<input name="q" autofocus="" placeholder="Search..." autocomplete="off" type="text">
+		</form>
+		
+	</div>
+  <div class="columnhead">News</div>
+  <div class="columnhead">Audio</div>
+  <div class="columnhead">Video</div>
+  <div class="columnhead">Work</div>
+	<div><a href="https://news.ycombinator.com/">Hacker News</a></div>
+  <div><a href="https://play.pocketcasts.com/discover">Pocket Casts</a></div>
+	<div><a href="https://www.youtube.com/">Youtube</a></div>
+	<div><a href="https://uwm.edu/office365/">Office 365</a></div>
+  <div><a href="https://techmeme.com/">Techmeme</a></div>
+  <div><a href="https://play.google.com/music/listen?u=0#/home">Google Play Music</a></div>
+  <div><a href="https://tv.youtube.com/">Youtube TV</a></div>
+	<div><a href="http://my.wisconsin.edu/">My UW</a></div>
+  <div><a href="https://slashdot.org/">Slashdot</a></div>
+	<div><a href="https://www.spotify.com/us/redirect/webplayerlink/">Spotify</a></div>
+  <div><a href="https://smile.amazon.com/gp/video/mystuff/library/ref=atv_mstff_yvl_tab">Amazon VOD</a></div>
+	<div><a href="https://uwm.edu/search/people/">UWM Search</a></div>
+	<div class="leftwide columnhead">Communicatons</div>
+  <div class="rightwide columnhead">Shopping</div>
+	<div class="leftwide"><a href="https://twitter.com">Twitter</a></div>
+	<div class="rightwide"><a href="https://slickdeals.net/">Slickdeals</a></div>
+  <div class="leftwide"><a href="https://www.instagram.com/">Instagram</a></div>
+	<div class="rightwide"><a href="https://smile.amazon.com/">Amazon</a></div>
+	<div class="leftwide"><a href="https://mastodon.social/">Mastodon</a></div>
+	<div class="rightwide"><a href="https://www.ebay.com/">eBay</a></div>
+	<div class="fullwide">Made by <a href="https://jws.dev">Joe</a> as a CSS Grid Example</div>
+</div>
 	</body>
 </html>
