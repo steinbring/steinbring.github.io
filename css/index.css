@@ -1,0 +1,196 @@
+/* Start: Typography */
+main h1 {
+  font-size: 2em;
+}
+main h2 {
+  font-size: 1.5em;
+}
+main h3 {
+  font-size: 1.17em;
+}
+main h4 {
+  font-size: 1em;
+}
+main h5 {
+  font-size: 0.83em;
+}
+main h6 {
+  font-size: 0.75em;
+}
+main p { 
+  line-height: 1.5;
+  margin: 0 0 1em;
+}
+/* End: Typography */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* START: Basic Flexbox stuff */
+* {
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img { 
+  width: 100vw;
+  display: block;
+  object-fit: cover;
+  height: 400px;
+}
+
+@media only screen and (max-height: 300px) {
+  img {
+    object-fit: cover;
+    height: 200px;
+  }
+}
+
+main {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+p, figure {
+  margin: 15px 0;
+}
+
+@media only screen and (max-width: 600px) {
+  p, h1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+figcaption {
+  text-align: center;
+  color: #999;
+}
+/* END: Basic Flexbox stuff */
+
+/* START: Nav stuff */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav li {
+  float: left;
+}
+
+nav li.home {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 620px) {
+  nav li.social {
+    border-right: none;
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 619px) {
+  nav li.social {
+    display: none;
+  }
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover:not(.active) {
+  background-color: #111;
+  color: white;
+}
+
+nav .active {
+  background-color: #4CAF50;
+}
+
+nav {
+  border-bottom:1px solid #bbb;
+}
+/* End: Nav stuff */
+
+/* The image at the top of the page */
+section#topimage figure {
+  margin-top: 0px;
+}
+
+/* Style the sections */
+section:not(#topimage) { 
+  min-height: 500px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+footer p{
+  text-align: center;
+}
+
+footer img { 
+  width: 100vw;
+  display: block;
+}
+
+/* Photo Gallery */
+#photogallery img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  object-fit: cover;
+  float:left;
+  filter: grayscale(0%); /* IE6-9 */
+  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+}
+
+#photogallery img:hover {
+  filter: none;
+  -webkit-filter: grayscale(0%);
+}
+
+#photogallery {
+  margin-top: 10px;
+}
+
+#morephotos{
+  width: 400px;
+  height: 200px;
+  display: block;
+  float:left;
+  background-color: black;
+  color:white;
+  text-align: center;
+  padding: 10px;
+  padding-top:40px;
+  font-size: 22px;
+}
+
+#morephotos i{
+  margin-left: 10px;
+  margin-right: 10px;
+}

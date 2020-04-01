@@ -1,84 +1,200 @@
+<!-- 
+                 
+                                                    ,-.----.  ,-.----.   
+      .--.         .---.                            \    /  \ \    /  \  
+    .--,`|        /. ./|  .--.--.                   |   :    ||   :    | 
+    |  |.      .-'-. ' | /  /    '        ,--.--.   |   | .\ :|   | .\ : 
+    '--`_     /___/ \: ||  :  /`./       /       \  .   : |: |.   : |: | 
+    ,--,'| .-'.. '   ' .|  :  ;_        .--.  .-. | |   |  \ :|   |  \ : 
+    |  | '/___/ \:     ' \  \    `.      \__\/: . . |   : .  ||   : .  | 
+    :  | |.   \  ' .\     `----.   \     ," .--.; | :     |`-':     |`-' 
+  __|  : ' \   \   ' \ | /  /`--'  /__  /  /  ,.  | :   : :   :   : :    
+.'__/\_: |  \   \  |--" '--'.     /  .\;  :   .'   \|   | :   |   | :    
+|   :    :   \   \ |      `--'---'\  ; |  ,     .-./`---'.|   `---'.|    
+ \   \  /     '---"                `--" `--`---'      `---`     `---`    
+  `--`-'                                                                 
+
+Finding an interest in how I wrote this page? Let me know if you have any questions.  You can find me on keybase or twitter (DMs are open).
+
+-->
+
 <!DOCTYPE html>
 <html>
-
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Joe Steinbring</title>
-	<meta name="description" content="Joe Steinbring is a web application engineer based in Glendale, Wisconsin. He is a traveler, a photographer, a politics watcher, and habitual hobby collector."/>
-	<meta name="keywords" content="Joe Steinbring, Joseph Steinbring, Joey Steinbring, Joseph William Steinbring, Steinbring, Milwaukee, Wisconsin, Laravel, PHP, JavaScript, ColdFusion, JWS">
-	<link rel="manifest" href="manifest.json">
-	<link rel="icon" href="https://jws.app/joe-drawn.png">
-	
-	<link rel="canonical" href="https://jws.app" />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:title" content="Joe Steinbring">
-	<meta property="og:description" content="Joe Steinbring is a web application engineer based in Glendale, Wisconsin. He is a traveler, a photographer, a politics watcher, and habitual hobby collector.">
-	<meta property="og:image" content="https://jws.app/joe-drawn.png" />
-	
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="application-name" content="JWS">
-	<meta name="apple-mobile-web-app-title" content="JWS">
-	<meta name="msapplication-starturl" content="/">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:description" content="Joe Steinbring is a web application engineer based in Glendale, Wisconsin. He is a traveler, a photographer, a politics watcher, and habitual hobby collector." />
-	<meta name="twitter:title" content="Joe Steinbring" />
-	<meta name="twitter:site" content="@steinbring" />
-	<meta name="twitter:image" content="https://jws.app/joe-drawn.png" />
-	<meta name="twitter:creator" content="@steinbring" />
-	
-	<link rel='dns-prefetch' href='//pro.fontawesome.com' />
+	<meta name="description" content="Joe Steinbring is a web application engineer based in Glendale, Wisconsin. He is a world traveler, a photographer, a politics watcher, and a habitual hobby collector."/>
+	<meta name="keywords" content="Joe Steinbring, Joseph Steinbring, Joey Steinbring, Joseph William Steinbring, Joseph W Steinbring, Steinbring, JWS, Glendale, Milwaukee, Wisconsin, Laravel, PHP, JavaScript, ColdFusion, VueJS">
 </head>
 <body>
-  <main>
-	  <a rel="me" href="https://jws.dev"><img src="joe-drawn.png" alt="Joe Steinbring"></a>
-	  <div id="icons">
-	  <a rel="me" href="https://keybase.io/steinbring"><i class="fab fa-keybase fa-2x" title="Keybase"></i></a>
-	  <a rel="me" href="https://twitter.com/steinbring"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a>
-	  <a rel="me" href="https://photos.jws.app/"><i class="fab fa-blogger fa-2x" title="Blogger"></i></a>
-	  <a rel="me" href="https://www.instagram.com/joesteinbring/"><i class="fab fa-instagram fa-2x" title="Instagram"></i></a>
-	  <a rel="me" href="https://blog.jws.app/"><i class="fab fa-wordpress fa-2x" title="Blog"></i></a>
-	  <a rel="me" href="https://mastodon.social/@steinbring"><i class="fab fa-mastodon fa-2x" title="Mastodon"></i></a>
-	  </div>
-  </main>
-  <style>
-	main {
-	  max-width: 38rem;
-	  padding: 2rem;
-	  margin: auto;
-	}
-	img {
-	  width: 100%;
-	}
-	header {
-	  margin-bottom: 2rem;
-	}
-	body {
-	  background-color: black;
-	  color: white;
-	}
-	#icons {
-	  height: 10em;
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	}
-	#icons i {
-	  margin-left: 10px;
-	  margin-right: 10px;
-	  color:white;
-	}
-	@media screen and (prefers-color-scheme: light) {
-		body {
-		  background-color: white;
-		  color: black;
-		}
-		#icons i {
-		  color: black;
-		}
-	}
-  </style>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css" integrity="sha384-sr3GDThhNP8BxHFoTK4zKFgOjcrT8vzaiLwnwU+yB31BCaNj3QMX6YVXcv8AeBAy" crossorigin="anonymous">
+	<div id="app">
+	<nav id="home">
+		<ul>
+		  <li class="home"><a href="#home">Joe Steinbring</a></li>
+		  <li><a href="#about">About</a></li>
+		  <li><a href="#updates">Updates</a></li>
+		  <li><a href="#photos">Photos</a></li>
+		  <li><a href="#travel">Travel</a></li>
+		  <li class="social">
+		  	<a href="https://keybase.io/steinbring"><i class="fab fa-keybase" title="Keybase"></i></a>
+		  </li>
+		  <li class="social">
+		  	<a href="https://twitter.com/steinbring"><i class="fab fa-twitter" title="Twitter"></i></a>
+		  </li>
+		  <li class="social">
+		  	<a href="https://www.instagram.com/joesteinbring/"><i class="fab fa-instagram" title="Instagram"></i></a>
+		  </li>
+		</ul>
+	</nav>
+
+	<main>
+		<section id="topimage">
+			<figure class='full-width'>
+				<img v-bind:src="this.featimages[0]">
+				<figcaption>{{this.featimgposts[0].title}}</figcaption>
+			</figure>
+		</section>
+
+		<section id="about">
+			<h1>About</h1>
+
+			<p>Hi!  My name is Joe Steinbring.  I am a web application engineer in Glendale, Wisconsin (a suburb of Milwaukee).  I have two dogs, a cat, and a hobby collection hobby.</p>
+		</section>
+
+		<section id="updates">
+			<h1>What is Joe up to?</h1>
+
+			<p>Below is a "super feed" of what I'm up to, online.  It is sorted by the date when I posted it.  The <a href="https://travels.jws.app/"><i class="fal fa-hiking" title="Travel"></i> Joe Travels</a> posts are always from the back catalog, so the date is on each post.</p>
+
+			<ul>
+				<li v-for="update in updates">
+					<span v-if="update.showdate" style="font-weight: bold;">
+						{{update.published.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}}
+					</span>
+					<div style="margin-left: 20px;">
+						<p><i v-bind:class="update.icon"></i> <a v-bind:href="update.url">{{update.title}}</a></p>
+						<!-- <p><img style="height: 10%;" v-bind:src="update.imgurl"></p> -->
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<section id="photos">
+			<h1>Photos</h1>
+
+			<p>You might notice from <a href="index.html#updates">above</a> that I post a lot of photos.  I try to post (at least) one photo per day.  I shoot with a FujiFilm X-A3, a DJI Spark (currently broken), and a Pixel 3.</p>
+
+			<div id="photogallery">
+				<div v-for="imgpost in imgposts">
+					<a v-bind:href="imgpost.url"><img v-bind:alt="imgpost.title" v-bind:src="imgpost.imgurl"></a>
+				</div>
+				<div id="morephotos">
+					<p>Follow me on <a href="https://www.instagram.com/joesteinbring/">Instagram</a> and <a href="https://www.flickr.com/photos/joesteinbring/">Flickr</a></p>
+					<p><a href="https://www.instagram.com/joesteinbring/"><i title="Instagram" class="fab fa-instagram fa-2x"></i></a><a href="https://www.flickr.com/photos/joesteinbring/"><i title="Instagram" class="fab fa-flickr fa-2x"></i></a></p>
+				</div>
+				<br style="clear: both;" />
+			</div>
+		</section>
+
+		<section id="travel">
+			<h1>Travel</h1>
+
+			<p>In November 2018, I traveled to <a href="https://travels.jws.app/tagged/China">China</a> (my first time outside of North America since College).  After that trip, I got it into my head that I would try to do at least one big trip per year.  Here is where I have been, so far.</p>
+
+			<div id="svgMap"></div>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Country</th>
+						<th>Year</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Canada (CA)</td>
+						<td>As a kid</td>
+						<td>Fishing is good</td>
+					</tr>
+					<tr>
+						<td>Mexico (MX)</td>
+						<td>In college</td>
+						<td>Street tacos were good</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/france">France (FR)</a></td>
+						<td>In college, 2019</td>
+						<td>Food is good</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/china">China (CN)</a></td>
+						<td>2018</td>
+						<td>Snake vodka is good</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/Spain">Spain (ES)</a></td>
+						<td>2019</td>
+						<td>Short trip</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/England">England (GB)</a></td>
+						<td>2019</td>
+						<td>Very rainy weather</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/Switzerland">Switzerland (CH)</a></td>
+						<td>2019</td>
+						<td>Expensive</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/Germany">Germany (DE)</a></td>
+						<td>2019</td>
+						<td>Saw an outdoor film festival</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/morocco">Morocco (MA)</a></td>
+						<td>2019</td>
+						<td>Food was lovely</td>
+					</tr>
+					<tr>
+						<td><a href="https://travels.jws.app/tagged/USA">United States (US)</a></td>
+						<td>--</td>
+						<td>Home</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</section>
+	</main>
+
+	<footer>
+		<figure class='full-width'>
+			<img src="./img/joe-above-head.jpg">
+		</figure>
+		<p>
+			Copyright &copy; 2020 <a rel="me" href="https://jws.dev">Joe Steinbring</a>. All rights reserved.
+		</p>
+		<p>
+			<a rel="me" href="https://keybase.io/steinbring"><i class="fab fa-keybase fa-2x" title="Keybase"></i></a>
+	  		<a rel="me" href="https://twitter.com/steinbring"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a>
+	  		<a rel="me" href="https://photos.jws.app/"><i class="fab fa-blogger fa-2x" title="Blogger"></i></a>
+	  		<a rel="me" href="https://www.instagram.com/joesteinbring/"><i class="fab fa-instagram fa-2x" title="Instagram"></i></a>
+	  		<a rel="me" href="https://blog.jws.app/"><i class="fab fa-wordpress fa-2x" title="Blog"></i></a>
+	  		<a rel="me" href="https://mastodon.social/@steinbring"><i class="fab fa-mastodon fa-2x" title="Mastodon"></i></a>
+		</p>
+	</footer>
+	</div>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css" integrity="sha384-sr3GDThhNP8BxHFoTK4zKFgOjcrT8vzaiLwnwU+yB31BCaNj3QMX6YVXcv8AeBAy" crossorigin="anonymous">
+	<link href="./css/svgMap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+	<script src="./js/svgMap.min.js"></script>
+
+	<script type="text/javascript" src="./js/index.js"></script>
+	
 </body>
 </html>
