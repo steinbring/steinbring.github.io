@@ -1,5 +1,6 @@
 new svgMap({
   targetElementID: 'svgMap',
+  mouseWheelZoomEnabled: false,
   data: {
     data: {
       visited: {
@@ -34,6 +35,7 @@ new Vue({
       github: null,
       dev: null,
       travels: null,
+      youtube: null,
       travelimages: [],
       updates: []
     };
@@ -196,5 +198,9 @@ new Vue({
     axios
     .get("https://api.tumblr.com/v2/blog/travels.jws.app/posts?api_key=vBP9f1qX2rROLMtFcjCRTIfleb0HOcArIs9Ui62oidzQItV63m")
       .then(response=> (this.travels = response.data.response.posts));
+    // Get youube videos
+    axios
+    .get("https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&forUsername=TheSteinbring&key=AIzaSyDMDCj74G_V9RzYRUXvQLsK2AWcob7FsKw")
+      .then(response=> (this.youtube = response.data));
   }
 });

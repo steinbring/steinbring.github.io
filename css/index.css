@@ -157,6 +157,10 @@ footer img {
   display: block;
 }
 
+.joehead{
+  width: 60%;
+}
+
 /* Photo Gallery */
 #photogallery img {
   width: 200px;
