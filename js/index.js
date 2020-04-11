@@ -144,9 +144,9 @@ new Vue({
         // If there are "Joe Flies" posts, add them to the updates array
         this.loaded=this.loaded+1;
       };
+      console.log(this.flies);
       // Do we have data from all 6 APIs?
       if(this.loaded==6){
-        console.log(this.flies);
         // Add recent images from the image blog
         for (var i = 0; i < this.imgposts.length; i++) {
           if(new Date(this.imgposts[i].published) >= this.oneMonthAgo())
