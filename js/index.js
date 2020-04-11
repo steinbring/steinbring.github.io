@@ -146,6 +146,7 @@ new Vue({
       };
       // Do we have data from all 6 APIs?
       if(this.loaded==6){
+        console.log(this.flies);
         // Add recent images from the image blog
         for (var i = 0; i < this.imgposts.length; i++) {
           if(new Date(this.imgposts[i].published) >= this.oneMonthAgo())
@@ -181,7 +182,6 @@ new Vue({
           if(new Date(this.flies[i].date) >= this.oneMonthAgo())
             this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
         }
-        console.log(this.flies);
       };
       // Sort updates by date (descending)
       this.updates.sort(function(a, b) {
