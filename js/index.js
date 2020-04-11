@@ -178,7 +178,7 @@ new Vue({
 
         // Add recent images from the "Joe Flies" blog
         for (var i = 0; i < 10; i++) {
-          if(this.flies.length < i+1){
+          if(this.flies.length > i+1){
             if(new Date(this.flies[i].date) >= this.oneMonthAgo())
               this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
           }
