@@ -144,7 +144,6 @@ new Vue({
         // If there are "Joe Flies" posts, add them to the updates array
         this.loaded=this.loaded+1;
       };
-      console.log(this.flies);
       // Do we have data from all 6 APIs?
       if(this.loaded==6){
         // Add recent images from the image blog
@@ -179,8 +178,10 @@ new Vue({
 
         // Add recent images from the "Joe Flies" blog
         for (var i = 0; i < 10; i++) {
-          if(new Date(this.flies[i].date) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
+          if(this.flies.length < i+1){
+            if(new Date(this.flies[i].date) >= this.oneMonthAgo())
+              this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
+          }
         }
       };
       // Sort updates by date (descending)
