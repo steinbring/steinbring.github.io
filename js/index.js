@@ -35,7 +35,9 @@ new Vue({
       github: null,
       dev: null,
       travels: null,
+      flies: null,
       travelimages: [],
+      flightimages: [],
       updates: []
     };
   },
@@ -87,6 +89,18 @@ new Vue({
         this.travelimages.push(this.travels[i].body.substring(x+5,y));
       }
       this.buildUpdates();
+    },
+    // Watch for the value of flies to change
+    'flies': function() {
+      // Track the array size for UI purposes
+      this.arraySize = this.flies.length;
+      // Once travelimages gets updated, this gets executed 
+      for (var i = 0; i < this.arraySize; i++) {
+        var x = this.flies[i].body.indexOf("src=\"");
+        var y = this.flies[i].body.indexOf("\"",x+5);
+        this.flightimages.push(this.flies[i].body.substring(x+5,y));
+      }
+      this.buildUpdates();
     }
   },
   methods: {
@@ -126,8 +140,12 @@ new Vue({
         // If there are "Joe Travels" posts, add them to the updates array
         this.loaded=this.loaded+1;
       };
-      // Do we have data from all 5 APIs?
-      if(this.loaded==5){
+      if(typeof(this.flies) !== "undefined" && this.flies !== null){
+        // If there are "Joe Flies" posts, add them to the updates array
+        this.loaded=this.loaded+1;
+      };
+      // Do we have data from all 6 APIs?
+      if(this.loaded==6){
         // Add recent images from the image blog
         for (var i = 0; i < this.imgposts.length; i++) {
           if(new Date(this.imgposts[i].published) >= this.oneMonthAgo())
@@ -156,6 +174,12 @@ new Vue({
         for (var i = 0; i < 10; i++) {
           if(new Date(this.travels[i].date) >= this.oneMonthAgo())
             this.updates.push({ icon: 'fal fa-hiking', published: new Date(this.travels[i].date), title: this.travels[i].summary, url: this.travels[i].post_url, imgurl: this.travelimages[i], showdate: true });
+        }
+
+        // Add recent images from the "Joe Flies" blog
+        for (var i = 0; i < 10; i++) {
+          if(new Date(this.flies[i].date) >= this.oneMonthAgo())
+            this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
         }
       };
       // Sort updates by date (descending)
@@ -197,5 +221,9 @@ new Vue({
     axios
     .get("https://api.tumblr.com/v2/blog/travels.jws.app/posts?api_key=vBP9f1qX2rROLMtFcjCRTIfleb0HOcArIs9Ui62oidzQItV63m")
       .then(response=> (this.travels = response.data.response.posts));
+    // Get flies.jws.app posts
+    axios
+    .get("https://api.tumblr.com/v2/blog/flies.jws.app/posts?api_key=vBP9f1qX2rROLMtFcjCRTIfleb0HOcArIs9Ui62oidzQItV63m")
+      .then(response=> (this.flies = response.data.response.posts));
   }
 });
