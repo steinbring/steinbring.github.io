@@ -94,7 +94,7 @@ new Vue({
     'flies': function() {
       // Track the array size for UI purposes
       this.arraySize = this.flies.length;
-      // Once travelimages gets updated, this gets executed 
+      // Once flightimages gets updated, this gets executed 
       for (var i = 0; i < this.arraySize; i++) {
         var x = this.flies[i].body.indexOf("src=\"");
         var y = this.flies[i].body.indexOf("\"",x+5);
@@ -181,6 +181,7 @@ new Vue({
           if(new Date(this.flies[i].date) >= this.oneMonthAgo())
             this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
         }
+        console.log(this.updates);
       };
       // Sort updates by date (descending)
       this.updates.sort(function(a, b) {
