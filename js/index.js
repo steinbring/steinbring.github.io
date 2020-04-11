@@ -181,7 +181,7 @@ new Vue({
           if(new Date(this.flies[i].date) >= this.oneMonthAgo())
             this.updates.push({ icon: 'fal fa-drone', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
         }
-        console.log(this.updates);
+        console.log(this.flies);
       };
       // Sort updates by date (descending)
       this.updates.sort(function(a, b) {
