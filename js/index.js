@@ -1,28 +1,3 @@
-new svgMap({
-  targetElementID: 'svgMap',
-  mouseWheelZoomEnabled: false,
-  data: {
-    data: {
-      visited: {
-        name: 'When Visited'
-      }
-    },
-    applyData: 'visited',
-    values: {
-      US: {visited: 'I live here'},
-      CN: {visited: '2018'},
-      CA: {visited: 'As a kid'},
-      MX: {visited: 'In college'},
-      MA: {visited: '2019'},
-      GB: {visited: '2019'},
-      FR: {visited: '2019'},
-      CH: {visited: '2019'},
-      DE: {visited: '2019'},
-      ES: {visited: '2019'}
-    }
-  }
-});
-
 new Vue({
   el: "#app",
   data() {
@@ -62,7 +37,12 @@ new Vue({
         var x = this.imgposts[i].content.indexOf("href=\"");
         var y = this.imgposts[i].content.indexOf("\"",x+6);
         this.images.push(this.imgposts[i].content.substring(x+6,y));
-        this.imgposts[i].imgurl=this.imgposts[i].content.substring(x+6,y);
+        // Is the image an image?
+        if(this.imgposts[i].content.substring(x+6,y).includes('.mp4')){
+          this.imgposts[i].imgurl='https://jws.dev/logo.png';
+        }else{
+          this.imgposts[i].imgurl=this.imgposts[i].content.substring(x+6,y);
+        }
       }
       this.buildUpdates();
     },
@@ -86,7 +66,12 @@ new Vue({
       for (var i = 0; i < this.arraySize; i++) {
         var x = this.travels[i].body.indexOf("src=\"");
         var y = this.travels[i].body.indexOf("\"",x+5);
-        this.travelimages.push(this.travels[i].body.substring(x+5,y));
+        // Is the image an image?
+        if(this.travels[i].body.substring(x+5,y).includes('.mp4')){
+          this.travelimages.push("https://jws.dev/logo.png");
+        }else{
+          this.travelimages.push(this.travels[i].body.substring(x+5,y));
+        }
       }
       this.buildUpdates();
     },
@@ -98,7 +83,12 @@ new Vue({
       for (var i = 0; i < this.arraySize; i++) {
         var x = this.flies[i].body.indexOf("src=\"");
         var y = this.flies[i].body.indexOf("\"",x+5);
-        this.flightimages.push(this.flies[i].body.substring(x+5,y));
+        // Is the image an image?
+        if(this.flies[i].body.substring(x+5,y).includes('.mp4')){
+          this.flightimages.push("https://jws.dev/logo.png");
+        }else{
+          this.flightimages.push(this.flies[i].body.substring(x+5,y));
+        }
       }
       this.buildUpdates();
     }
@@ -149,38 +139,44 @@ new Vue({
         // Add recent images from the image blog
         for (var i = 0; i < this.imgposts.length; i++) {
           if(new Date(this.imgposts[i].published) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fal fa-photo-video', published: new Date(this.imgposts[i].published), title: this.imgposts[i].title, url: this.imgposts[i].url, imgurl: this.images[i], showdate: true });
+            this.updates.push({ icon: 'fal fa-photo-video', width: 'narrowpost', published: new Date(this.imgposts[i].published), title: this.imgposts[i].title, url: this.imgposts[i].url, imgurl: this.images[i], showdate: true, service: 'Photos.jws' });
         }
 
         // Add recent blog posts from the wordpress site
         for (var i = 0; i < this.blogposts.length; i++) {
           if(new Date(this.blogposts[i].date) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fal fa-blog', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: this.blogposts[i].jetpack_featured_media_url, showdate: true });
+            // Check to see if the image is an image                      
+            if(this.blogposts[i].jetpack_featured_media_url == ''){
+              this.updates.push({ icon: 'fal fa-blog', width: 'widepost', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: 'https://jws.dev/logo.png', showdate: true, service: 'Blog.jws', serviceurl: 'https://blog.jws.app', excerpt: this.blogposts[i].excerpt.rendered });
+            }else{
+              this.updates.push({ icon: 'fal fa-blog', width: 'widepost', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: this.blogposts[i].jetpack_featured_media_url, showdate: true, service: 'Blog.jws', serviceurl: 'https://blog.jws.app', excerpt: this.blogposts[i].excerpt.rendered });
+            }
         }
 
         // Add recent github activity from github
         for (var i = 0; i < 10; i++) {
           if(new Date(this.github[i].created_at) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fab fa-github', published: new Date(this.github[i].created_at), title: this.github[i].type+': '+this.github[i].repo.name, url: this.github[i].repo.url, imgurl: './img/github.png', showdate: true });
+            this.updates.push({ icon: 'fab fa-github', width: 'narrowpost', published: new Date(this.github[i].created_at), title: this.github[i].type+': '+this.github[i].repo.name, url: this.github[i].repo.url, imgurl: './img/github.png', showdate: true, service: 'Github', serviceurl: 'https://github.com/steinbring/' });
         }
 
         // Add recent posts from the practical dev
+        console.log(this.dev);
         for (var i = 0; i < this.dev.length; i++) {
           if(new Date(this.dev[i].published_at) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fab fa-dev', published: new Date(this.dev[i].published_at), title: this.dev[i].title, url: this.dev[i].url, imgurl: this.dev[i].social_image, showdate: true });
+            this.updates.push({ icon: 'fab fa-dev', width: 'widepost', published: new Date(this.dev[i].published_timestamp), title: this.dev[i].title, url: this.dev[i].url, imgurl: this.dev[i].social_image, showdate: true, service: 'DEV', serviceurl: 'https://dev.to/steinbring/', excerpt: this.dev[i].description });
         }
 
         // Add recent images from the "Joe Travels" blog
         for (var i = 0; i < 10; i++) {
           if(new Date(this.travels[i].date) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fal fa-hiking', published: new Date(this.travels[i].date), title: this.travels[i].summary, url: this.travels[i].post_url, imgurl: this.travelimages[i], showdate: true });
+            this.updates.push({ icon: 'fal fa-hiking', width: 'narrowpost', published: new Date(this.travels[i].date), title: this.travels[i].summary, url: this.travels[i].post_url, imgurl: this.travelimages[i], showdate: true, service: 'Joe Travels', serviceurl: 'https://travels.jws.app/' });
         }
 
         // Add recent images from the "Joe Flies" blog
         for (var i = 0; i < 10; i++) {
           if(this.flies.length > i+1){
             if(new Date(this.flies[i].date) >= this.oneMonthAgo())
-              this.updates.push({ icon: 'fal fa-drone-alt', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true });
+              this.updates.push({ icon: 'fal fa-drone-alt', width: 'narrowpost', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true, service: 'Joe Flies', serviceurl: 'https://flies.jws.app/' });
           }
         }
       };
@@ -188,12 +184,6 @@ new Vue({
       this.updates.sort(function(a, b) {
           return b.published - a.published;
       });
-      // Set the "don't show the date" flag for when it's displayed on the screen
-      for (var i = 0; i < this.updates.length; i++) {
-        if(i>0 && this.updates[i].published.toLocaleDateString("en-US") == this.updates[i-1].published.toLocaleDateString("en-US")){
-          this.updates[i].showdate = false;
-        }
-      };
     }
   },
   mounted() {

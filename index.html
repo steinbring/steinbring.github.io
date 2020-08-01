@@ -51,173 +51,116 @@ Finding an interest in how I wrote this page? Let me know if you have any questi
 	<link rel='dns-prefetch' href='//api.tumblr.com' />
 </head>
 <body>
+	
 	<div id="app">
-	<nav id="home">
-		<ul>
-		  <li class="home"><a href="#home">Joe Steinbring</a></li>
-		  <li><a href="#about">About</a></li>
-		  <li><a href="#updates">Updates</a></li>
-		  <li><a href="#photos">Photos</a></li>
-		  <li><a href="#travel">Travel</a></li>
-		  <li class="social">
-		  	<a href="https://keybase.io/steinbring"><i class="fab fa-keybase" title="Keybase"></i></a>
-		  </li>
-		  <li class="social">
-		  	<a href="https://twitter.com/steinbring"><i class="fab fa-twitter" title="Twitter"></i></a>
-		  </li>
-		  <li class="social">
-		  	<a href="https://www.instagram.com/joesteinbring/"><i class="fab fa-instagram" title="Instagram"></i></a>
-		  </li>
-		</ul>
-	</nav>
+		<section class="hero is-dark is-medium" class="masthead" role="img" v-bind:aria-label="this.featimgposts[0].title" v-bind:style="{ 'background': 'radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 39%, rgba(0,0,0,0.95) 100%), url(' + this.featimages[0] + ') no-repeat center center scroll' }" id="home">
+		  <!-- Hero head: will stick at the top -->
+		  <div class="hero-head">
+		    <nav class="navbar is-transparent">
+		      <div class="container">
+		        <div class="navbar-brand">
+		          <a class="navbar-item is-size-4 has-text-weight-bold" href="#home">
+		            Joe Steinbring
+		          </a>
+		          <span class="navbar-burger burger has-text-white" data-target="navbarMenuHero" onclick="document.getElementById('navbarMenuHero').classList.toggle('is-active');">
+		            <span></span>
+		            <span></span>
+		            <span></span>
+		          </span>
+		        </div>
+		        <div id="navbarMenuHero" class="navbar-menu">
+		          <div class="navbar-end">
+		            <a class="navbar-item" href="#about">
+		              About
+		            </a>
+		            <a class="navbar-item" href="#updates">
+		              Updates
+		            </a>
+		          </div>
+		        </div>
+		      </div>
+		    </nav>
+		  </div>
 
-	<main>
-		<section id="topimage">
-			<figure class='full-width'>
-				<img v-bind:src="this.featimages[0]">
-				<figcaption>{{this.featimgposts[0].title}}</figcaption>
-			</figure>
+		  <!-- Hero content: will be in the middle -->
+		  <div class="hero-body">
+		  </div>
 		</section>
 
-		<section id="about">
-			<h1>About</h1>
-			<p>Hi!  My name is <a href="https://jws.dev/">Joe Steinbring</a>.  I am a web application engineer in Glendale, Wisconsin (a suburb of Milwaukee).  I currently work for the <a href="https://uwm.edu">University of Wisconsin, Milwaukee</a>.  I have two dogs, a cat, and a hobby collection hobby.</p>
-			<p>This website exists as a little bit of an <a href="https://blog.jws.app/tag/jws-app/">experimental laboratory</a>.  You can follow some of my public work <a href="https://jws.app/#updates">below</a>.</p>
-			
-		</section>
+		<!-- Start: Content -->
+		<div class="box mr-5 ml-5 upwardbump">
+			<section class="section" id="about">
+				<div class="container">
+					<h1 class="title">About</h1>
+					<p>Hi! My name is <a href="https://jws.dev/">Joe Steinbring</a>. I am a web application engineer in Glendale, Wisconsin (a suburb of Milwaukee). I currently work for the <a href="https://uwm.edu">University of Wisconsin, Milwaukee</a>. I have two dogs, a cat, and a hobby collection hobby.</p>
+					<p>This website exists as a little bit of an <a href="https://blog.jws.app/tag/jws-app/">experimental laboratory</a>. You can follow some of my public work <a href="https://jws.app/#updates">below</a>.</p>
+				</div>
+			</section>
+		</div>
 
-		<section id="updates">
-			<h1>What is Joe up to?</h1>
+		<div class="box mr-5 ml-5">
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Updates</h1>
+					<div class="updates">
+						<div class="card" v-for="update in updates" v-bind:class="update.width">
+							<div class="card-image">
+								<figure class="image is-4by3">
+									<a v-bind:href="update.url"><img v-bind:src="update.imgurl"></a>
+								</figure>
+							</div>
+							<div class="card-content">
+								<div class="media">
+									<div class="media-content">
+										<p class="title is-4"><a v-bind:href="update.serviceurl"><i v-bind:class="update.icon"></i> {{update.service}}</a></p>
+										<p class="subtitle is-6" v-html="update.title"></p>
+									</div>
+								</div>
 
-			<p>Below is a "super feed" of what I'm up to, online.  It is sorted by the date when I posted it.  The <a href="https://travels.jws.app/"><i class="fal fa-hiking" title="Travel"></i> Joe Travels</a> posts are always from the back catalog, so the date is on each post.</p>
-
-			<ul>
-				<li v-for="update in updates">
-					<span v-if="update.showdate" style="font-weight: bold;">
-						{{update.published.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}}
-					</span>
-					<div style="margin-left: 20px;">
-						<p><i v-bind:class="update.icon"></i> <a v-bind:href="update.url">{{update.title}}</a></p>
-						<!-- <p><img style="height: 10%;" v-bind:src="update.imgurl"></p> -->
+								<div class="content">
+									<p v-if="update.width=='widepost'" v-html="update.excerpt">
+									</p>
+									<br />
+									<a v-bind:href="update.url"><time datetime="2016-1-1">{{update.published.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}}</time></a>
+								</div>
+							</div>
+						</div>
 					</div>
-				</li>
-			</ul>
-		</section>
-
-		<section id="photos">
-			<h1>Photos</h1>
-
-			<p>You might notice from <a href="index.html#updates">above</a> that I post a lot of photos.  I try to post (at least) one photo per day.  I shoot with a FujiFilm X-A3, a DJI Mavic Mini, and a Pixel 3.</p>
-
-			<div id="photogallery">
-				<div v-for="imgpost in imgposts">
-					<a v-bind:href="imgpost.url"><img v-bind:alt="imgpost.title" v-bind:src="imgpost.imgurl"></a>
 				</div>
-				<div id="morephotos">
-					<p>Follow me on <a href="https://www.instagram.com/joesteinbring/">Instagram</a> and <a href="https://www.flickr.com/photos/joesteinbring/">Flickr</a></p>
-					<p><a href="https://www.instagram.com/joesteinbring/"><i title="Instagram" class="fab fa-instagram fa-2x"></i></a><a href="https://www.flickr.com/photos/joesteinbring/"><i title="Instagram" class="fab fa-flickr fa-2x"></i></a></p>
-				</div>
-				<br style="clear: both;" />
+			</section>
+		</div>
+
+		<!-- The footer  -->
+		<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a rel="me" href="https://keybase.io/steinbring"><i class="fab fa-keybase" title="Keybase"></i></a>
+				<a rel="me" href="https://twitter.com/steinbring"><i class="fab fa-twitter" title="Twitter"></i></a>
+				<a rel="me" href="https://www.instagram.com/joesteinbring/"><i class="fab fa-instagram" title="Instagram"></i></a>
+				<a rel="me" href="https://mastodon.social/@steinbring"><i class="fab fa-mastodon" title="Mastodon"></i></a>
+
 			</div>
-		</section>
 
-		<section id="travel">
-			<h1>Travel</h1>
+			<div class="footer-left">
 
-			<p>In November 2018, I traveled to <a href="https://travels.jws.app/tagged/China">China</a> (my first time outside of North America since college).  After that trip, I got it into my head that I would try to do at least one big trip per year (something that was then interrupted by COVID-19).  Here is where I have been, so far:</p>
+				<p class="footer-links">
+					<a class="link-1" href="#about">About</a>
+					<a href="#updates">Updates</a>
+				</p>
 
-			<div id="svgMap"></div>
+				<p>Joe Steinbring &copy; 2020</p>
+			</div>
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Country</th>
-						<th>Year</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Canada (CA)</td>
-						<td>As a kid</td>
-						<td>Fishing is good</td>
-					</tr>
-					<tr>
-						<td>Mexico (MX)</td>
-						<td>In college</td>
-						<td>Street tacos were good</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/france">France (FR)</a></td>
-						<td>In college, 2019</td>
-						<td>Food is good</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/china">China (CN)</a></td>
-						<td>2018</td>
-						<td>Snake vodka is good</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/Spain">Spain (ES)</a></td>
-						<td>2019</td>
-						<td>Short trip</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/England">England (GB)</a></td>
-						<td>2019</td>
-						<td>Very rainy weather</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/Switzerland">Switzerland (CH)</a></td>
-						<td>2019</td>
-						<td>Expensive</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/Germany">Germany (DE)</a></td>
-						<td>2019</td>
-						<td>Saw an outdoor film festival</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/morocco">Morocco (MA)</a></td>
-						<td>2019</td>
-						<td>Food was lovely</td>
-					</tr>
-					<tr>
-						<td><a href="https://travels.jws.app/tagged/USA">United States (US)</a></td>
-						<td>--</td>
-						<td>Home</td>
-					</tr>
-				</tbody>
-			</table>
-
-		</section>
-	</main>
-
-	<footer>
-		<figure class='full-width'>
-			<img src="./img/joe-above-head.jpg">
-		</figure>
-		<p>
-			Copyright &copy; 2020 <a rel="me" href="https://jws.dev">Joe Steinbring</a>. All rights reserved.
-		</p>
-		<p>
-			<a rel="me" href="https://keybase.io/steinbring"><i class="fab fa-keybase fa-2x" title="Keybase"></i></a>
-	  		<a rel="me" href="https://twitter.com/steinbring"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a>
-	  		<a rel="me" href="https://photos.jws.app/"><i class="fab fa-blogger fa-2x" title="Blogger"></i></a>
-	  		<a rel="me" href="https://www.instagram.com/joesteinbring/"><i class="fab fa-instagram fa-2x" title="Instagram"></i></a>
-	  		<a rel="me" href="https://blog.jws.app/"><i class="fab fa-wordpress fa-2x" title="Blog"></i></a>
-	  		<a rel="me" href="https://mastodon.social/@steinbring"><i class="fab fa-mastodon fa-2x" title="Mastodon"></i></a>
-		</p>
-	</footer>
+		</footer>
+		
 	</div>
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css" integrity="sha384-sr3GDThhNP8BxHFoTK4zKFgOjcrT8vzaiLwnwU+yB31BCaNj3QMX6YVXcv8AeBAy" crossorigin="anonymous">
-	<link href="./css/svgMap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-	<script src="./js/svgMap.min.js"></script>
 
 	<script type="text/javascript" src="./js/index.js"></script>
 	
