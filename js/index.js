@@ -138,45 +138,70 @@ new Vue({
       if(this.loaded==6){
         // Add recent images from the image blog
         for (var i = 0; i < this.imgposts.length; i++) {
-          if(new Date(this.imgposts[i].published) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fal fa-photo-video', width: 'narrowpost', published: new Date(this.imgposts[i].published), title: this.imgposts[i].title, url: this.imgposts[i].url, imgurl: this.images[i], showdate: true, service: 'Photos.jws' });
+          try {
+            if(new Date(this.imgposts[i].published) >= this.oneMonthAgo())
+              this.updates.push({ icon: 'fal fa-photo-video', width: 'narrowpost', published: new Date(this.imgposts[i].published), title: this.imgposts[i].title, url: this.imgposts[i].url, imgurl: this.images[i], showdate: true, service: 'Photos.jws' });
+          } catch (error) {
+            console.error(error);
+          }
         }
 
         // Add recent blog posts from the wordpress site
         for (var i = 0; i < this.blogposts.length; i++) {
-          if(new Date(this.blogposts[i].date) >= this.oneMonthAgo())
-            // Check to see if the image is an image                      
-            if(this.blogposts[i].jetpack_featured_media_url == ''){
-              this.updates.push({ icon: 'fal fa-blog', width: 'widepost', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: 'https://jws.dev/logo.png', showdate: true, service: 'Blog.jws', serviceurl: 'https://blog.jws.app', excerpt: this.blogposts[i].excerpt.rendered });
-            }else{
-              this.updates.push({ icon: 'fal fa-blog', width: 'widepost', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: this.blogposts[i].jetpack_featured_media_url, showdate: true, service: 'Blog.jws', serviceurl: 'https://blog.jws.app', excerpt: this.blogposts[i].excerpt.rendered });
+          if(new Date(this.blogposts[i].date) >= this.oneMonthAgo()){
+            // Check to see if the image is an image
+            try {           
+              if(this.blogposts[i].jetpack_featured_media_url == ''){
+                this.updates.push({ icon: 'fal fa-blog', width: 'widepost', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: 'https://jws.dev/logo.png', showdate: true, service: 'Blog.jws', serviceurl: 'https://blog.jws.app', excerpt: this.blogposts[i].excerpt.rendered });
+              }else{
+                this.updates.push({ icon: 'fal fa-blog', width: 'widepost', published: new Date(this.blogposts[i].date), title: this.blogposts[i].title.rendered, url: this.blogposts[i].link, imgurl: this.blogposts[i].jetpack_featured_media_url, showdate: true, service: 'Blog.jws', serviceurl: 'https://blog.jws.app', excerpt: this.blogposts[i].excerpt.rendered });
+              }
+            } catch (error) {
+              console.error(error);
             }
+          }
         }
 
         // Add recent github activity from github
         for (var i = 0; i < 10; i++) {
-          if(new Date(this.github[i].created_at) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fab fa-github', width: 'narrowpost', published: new Date(this.github[i].created_at), title: this.github[i].type+': '+this.github[i].repo.name, url: this.github[i].repo.url, imgurl: './img/github.png', showdate: true, service: 'Github', serviceurl: 'https://github.com/steinbring/' });
+          try { 
+            if(new Date(this.github[i].created_at) >= this.oneMonthAgo())
+              this.updates.push({ icon: 'fab fa-github', width: 'narrowpost', published: new Date(this.github[i].created_at), title: this.github[i].type+': '+this.github[i].repo.name, url: this.github[i].repo.url, imgurl: './img/github.png', showdate: true, service: 'Github', serviceurl: 'https://github.com/steinbring/' });
+          } catch (error) {
+            console.error(error);
+          }
         }
 
         // Add recent posts from the practical dev
-        console.log(this.dev);
         for (var i = 0; i < this.dev.length; i++) {
-          if(new Date(this.dev[i].published_at) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fab fa-dev', width: 'widepost', published: new Date(this.dev[i].published_timestamp), title: this.dev[i].title, url: this.dev[i].url, imgurl: this.dev[i].social_image, showdate: true, service: 'DEV', serviceurl: 'https://dev.to/steinbring/', excerpt: this.dev[i].description });
+          try { 
+            if(new Date(this.dev[i].published_at) >= this.oneMonthAgo()){
+              this.updates.push({ icon: 'fab fa-dev', width: 'widepost', published: new Date(this.dev[i].published_timestamp), title: this.dev[i].title, url: this.dev[i].url, imgurl: this.dev[i].social_image, showdate: true, service: 'DEV', serviceurl: 'https://dev.to/steinbring/', excerpt: this.dev[i].description });
+            }
+          } catch (error) {
+            console.error(error);
+          }
         }
 
         // Add recent images from the "Joe Travels" blog
         for (var i = 0; i < 10; i++) {
-          if(new Date(this.travels[i].date) >= this.oneMonthAgo())
-            this.updates.push({ icon: 'fal fa-hiking', width: 'narrowpost', published: new Date(this.travels[i].date), title: this.travels[i].summary, url: this.travels[i].post_url, imgurl: this.travelimages[i], showdate: true, service: 'Joe Travels', serviceurl: 'https://travels.jws.app/' });
+          try { 
+            if(new Date(this.travels[i].date) >= this.oneMonthAgo())
+              this.updates.push({ icon: 'fal fa-hiking', width: 'narrowpost', published: new Date(this.travels[i].date), title: this.travels[i].summary, url: this.travels[i].post_url, imgurl: this.travelimages[i], showdate: true, service: 'Joe Travels', serviceurl: 'https://travels.jws.app/' });
+          } catch (error) {
+            console.error(error);
+          }
         }
 
         // Add recent images from the "Joe Flies" blog
         for (var i = 0; i < 10; i++) {
-          if(this.flies.length > i+1){
-            if(new Date(this.flies[i].date) >= this.oneMonthAgo())
-              this.updates.push({ icon: 'fal fa-drone-alt', width: 'narrowpost', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true, service: 'Joe Flies', serviceurl: 'https://flies.jws.app/' });
+          try { 
+            if(this.flies.length > i+1){
+              if(new Date(this.flies[i].date) >= this.oneMonthAgo())
+                this.updates.push({ icon: 'fal fa-drone-alt', width: 'narrowpost', published: new Date(this.flies[i].date), title: this.flies[i].summary, url: this.flies[i].post_url, imgurl: this.flightimages[i], showdate: true, service: 'Joe Flies', serviceurl: 'https://flies.jws.app/' });
+            }
+          } catch (error) {
+            console.error(error);
           }
         }
       };
