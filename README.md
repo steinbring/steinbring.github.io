@@ -3,4 +3,4 @@ jws.app
 
 What is this?
 -------------
-[jws.app](https://jws.app) uses [GitHub Pages](https://pages.github.com/) for hosting.  These are the files behind that site.  [blog.jws](https://blog.jws.app), [photos.jws](https://photos.jws.app), and [jws.dev](https://jws.dev) are hosted elsewhere.
+[jws.app](https://jws.app) uses [GitHub Pages](https://pages.github.com/) for hosting.  These are the files behind that site.  [JWS News](https://jws.news), [JWS Photos](https://photos.jws.app), and [JWS Dev](https://jws.dev) are hosted elsewhere.
